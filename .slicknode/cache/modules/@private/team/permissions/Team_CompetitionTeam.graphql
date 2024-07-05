@@ -1,0 +1,16 @@
+query Team_CompetitionTeamPermission1 {
+  scope(role: ANONYMOUS, operations: [READ])
+}
+
+
+query Team_CompetitionTeamPermission2 {
+  scope(role: STAFF, operations: [CREATE, UPDATE, DELETE, PUBLISH, UNPUBLISH])
+}
+
+
+query Team_CompetitionTeamPermission3 {
+  scope(
+    role: RUNTIME
+    operations: [CREATE, UPDATE, DELETE, PUBLISH, UNPUBLISH, READ]
+  )
+}

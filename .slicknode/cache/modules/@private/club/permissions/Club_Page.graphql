@@ -1,0 +1,16 @@
+query Club_PagePermission1 {
+  scope(role: ANONYMOUS, operations: [READ])
+}
+
+
+query Club_PagePermission2 {
+  scope(role: STAFF, operations: [CREATE, UPDATE, DELETE, PUBLISH, UNPUBLISH])
+}
+
+
+query Club_PagePermission3 {
+  scope(
+    role: RUNTIME
+    operations: [CREATE, UPDATE, DELETE, PUBLISH, UNPUBLISH, READ]
+  )
+}

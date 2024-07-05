@@ -1,0 +1,79 @@
+type Team_Club implements Node {
+  id: ID!
+  name: String! @unique
+  logo: Image!
+  oneLiner: String!
+  description: String! @input(type: MARKDOWN)
+  achievements: [Team_Achievement!]!
+    @relation(path: "Team_Club=club.Team_Achievement")
+  projects: [Team_Project!]! @relation(path: "Team_Club=club.Team_Project")
+  gallery: [Team_Media!]! @relation(path: "Team_Club=club.Team_Media")
+  email: String! @unique
+  contacts: [Team_Contact!]! @relation(path: "Team_Club=club.Team_Contact")
+}
+
+type Team_CompetitionTeam implements Node {
+  id: ID!
+  name: String! @unique
+  logo: Image!
+  landing: Image!
+  description: String! @input(type: MARKDOWN)
+  achievements: [Team_Achievement!]!
+    @relation(path: "Team_CompetitionTeam=compteam.Team_Achievement")
+  projects: [Team_Project!]!
+    @relation(path: "Team_CompetitionTeam=compteam.Team_Project")
+  gallery: [Team_Media!]!
+    @relation(path: "Team_CompetitionTeam=compteam.Team_Media")
+  website: String
+  email: String! @unique
+  contacts: [Team_Contact!]!
+    @relation(path: "Team_CompetitionTeam=compteam.Team_Contact")
+}
+
+type Team_ManagerialTeam implements Node {
+  id: ID!
+  name: String! @unique
+  description: String! @input(type: MARKDOWN)
+  image: Image!
+  email: String! @unique
+  contacts: [Team_Contact!]!
+    @relation(path: "Team_ManagerialTeam=managerial.Team_Contact")
+}
+
+type Team_Achievement implements Node {
+  id: ID!
+  title: String
+  description: String! @input(type: MARKDOWN)
+  image: Image
+  club: Team_Club
+  compteam: Team_CompetitionTeam
+}
+
+type Team_Project implements Node {
+  id: ID!
+  title: String!
+  image: Image
+  description: String! @input(type: MARKDOWN)
+  club: Team_Club
+  compteam: Team_CompetitionTeam
+}
+
+type Team_Contact implements Node {
+  id: ID!
+  name: String!
+  image: Image!
+  email: String!
+  phone: String!
+  linkedIn: String
+  club: Team_Club
+  compteam: Team_CompetitionTeam
+  managerial: Team_ManagerialTeam
+}
+
+type Team_Media implements Node {
+  id: ID!
+  media: Image!
+  club: Team_Club
+  compteam: Team_CompetitionTeam
+  managerial: Team_ManagerialTeam
+}

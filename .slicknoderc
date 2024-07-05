@@ -1,0 +1,8 @@
+{
+  "default": {
+    "endpoint": "https://api.us-east-1.aws.slicknode.com/v1/awesome-neptunmetal-139a6bcd",
+    "alias": "awesome-neptunmetal-139a6bcd",
+    "name": "Awesome-Neptunmetal",
+    "id": "UHJvamVjdDoxMTY5"
+  }
+}
